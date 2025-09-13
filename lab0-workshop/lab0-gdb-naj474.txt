@@ -1,0 +1,463 @@
+NANDISH JHA NAJ474 11282001
+
+
+
+=========================================
+GDB for input-routines.c
+=========================================
+
++echo === Debugging input-routines.c ===
+=== Debugging input-routines.c ===+break input-routines.c:48
+Breakpoint 1 at 0x400898: file input-routines.c, line 48.
++set args 0 < input0.txt
++run
+Starting program: /student/naj474/CMPT332/LABS/NAJ474-CMPT332-LAB0/
+  lab0-workshop/myQsort 0 < input0.txt
+
+This GDB supports auto-downloading debuginfo from the following URLs:
+  <https://debuginfod.fedoraproject.org/>
+Debuginfod has been enabled.
+To make this setting permanent, add 'set debuginfod enabled on' to .gdbinit.
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib64/libthread_db.so.1".
+
+Breakpoint 1, writelines (lineptr=0x403080 <lineptr>, nlines=9)
+  at input-routines.c:48
++echo === At the breakpoint that I doubt ===
+=== At the breakpoint that I doubt ===+info locals
+No locals.
++print lineptr
+$1 = (char **) 0x403080 <lineptr>
++print *linptr
+No symbol "linptr" in current context.
++print *lineptr
+$2 = 0x4062b0 "grape"
++list 45,50
++step
+0x00007ffff7d03396 in __GI__IO_puts (str=0x4062b0 "grape") at ioputs.c:35
++next
++next
++next
++next
+__GI__IO_puts (str=0x4062b0 "grape") at /usr/src/debug/
+  glibc-2.41-11.fc42.x86_64/libio/libioP.h:1041
++next
+__GI__IO_puts (str=0x4062b0 "grape") at ioputs.c:42
++next
++next
+writelines (lineptr=0x403088 <lineptr+8>, nlines=9) at input-routines.c:47
++print lineptr
+$3 = (char **) 0x403088 <lineptr+8>
++print *lineptr
+$4 = 0x4062d0 "peach"
++bt
+#0  writelines (lineptr=0x403088 <lineptr+8>, nlines=9) at input-routines.c:47
+#1  0x0000000000400595 in main (argc=2, argv=0x7fffffffdbc8) at sortMain.c:42
++set logging off
+Warning: 'set logging off', an alias for the command
+  'set logging enabled', is deprecated.
+Use 'set logging enabled off'.
+
+=========================================
+GDB for qsort.c
+=========================================
+
++echo === Debugginh qsort.c ===
+=== Debugginh qsort.c ===+break qsort.c:15
+Breakpoint 1 at 0x4005f8: file qsort.c, line 18.
++break qsort.c:24
+Breakpoint 2 at 0x40062e: file qsort.c, line 24.
++set args 0 < input0.txt
++run
+Starting program: /student/naj474/CMPT332/LABS/NAJ474-CMPT332-LAB0/
+  lab0-workshop/myQsort 0 < input0.txt
+
+This GDB supports auto-downloading debuginfo from the following URLs:
+  <https://debuginfod.fedoraproject.org/>
+Debuginfod has been enabled.
+To make this setting permanent, add 'set debuginfod enabled on' to .gdbinit.
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib64/libthread_db.so.1".
+
+Breakpoint 1, myQsort (v=0x403080 <lineptr>, left=0, right=9,
+  comp=0x400390 <strcmp@plt>) at qsort.c:18
++info locals
+index = 0
+last = 4206800
++print left
+$1 = 0
++print right
+$2 = 9
++print *right
+Cannot access memory at address 0x9
++print comp
+$3 = (Comparator) 0x400390 <strcmp@plt>
++print *comp
+$4 = {int (void *, void *)} 0x400390 <strcmp@plt>
++list 20,28
+Specified first line '20' is ambiguous:
+file: "qsort.c", line number: 20, symbol: "???"
+file: "qsort.c", line number: 20, symbol: "???"
++list 28
+file: "qsort.c", line number: 28, symbol: "???"
+file: "qsort.c", line number: 28, symbol: "???"
++step
++step
+swap (v=0x403080 <lineptr>, i=0, j=4) at swap.c:9
++print i
+$5 = 0
++print j
+$6 = 4
++bt
+#0  swap (v=0x403080 <lineptr>, i=0, j=4) at swap.c:9
+#1  0x0000000000400628 in myQsort (v=0x403080 <lineptr>, left=0, right=9,
+  comp=0x400390 <strcmp@plt>) at qsort.c:21
+#2  0x00000000004005b1 in main (argc=2, argv=0x7fffffffdbc8) at sortMain.c:44
++set logging off
+Warning: 'set logging off', an alias for the command
+  'set logging enabled', is deprecated.
+Use 'set logging enabled off'.
+
+=========================================
+GDB for compleComp.c
+=========================================
+
+Ambiguous set command "trace commands": trace-buffer-size, trace-commands,
+  trace-notes, trace-stop-notes, trace-user.
++echo === exploring complexComp.c ===
+=== exploring complexComp.c ===+break main
+Breakpoint 1 at 0x4004f5: file sortMain.c, line 19.
++break myQsort
+Breakpoint 2 at 0x4005f8: file qsort.c, line 18.
++break complexComp
+Function "complexComp" not defined.
++break compareComplex 
+Breakpoint 3 at 0x4008f6: file complexComp.c, line 25.
++set args 3 < input3.txt
++run
+Starting program: /student/naj474/CMPT332/LABS/NAJ474-CMPT332-LAB0/
+  lab0-workshop/myQsort 3 < input3.txt
+
+This GDB supports auto-downloading debuginfo from the following URLs:
+  <https://debuginfod.fedoraproject.org/>
+Debuginfod has been enabled.
+To make this setting permanent, add 'set debuginfod enabled on' to .gdbinit.
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib64/libthread_db.so.1".
+
+Breakpoint 1, main (argc=2, argv=0x7fffffffdbc8) at sortMain.c:19
++echo === Local Variable Addresses ===
+=== Local Variable Addresses ===+info locals
+nlines = 0
+sortType = STRING
+comparing = 0x7ffff7fe5be0 <dl_main>
++print &argc
+$1 = (int *) 0x7fffffffda8c
++print &argv
+$2 = (char ***) 0x7fffffffda80
++echo === Function Addresses ===
+=== Function Addresses ===+print &main
+$3 = (int (*)(int, char **)) 0x4004e6 <main>
++print &myQsort 
+$4 = (void (*)(void **, int, int, Comparator)) 0x4005e2 <myQsort>
++print &compareComplex 
+$5 = (int (*)(void *, void *)) 0x4008e6 <compareComplex>
++continue
+Continuing.
+
+Breakpoint 2, myQsort (v=0x403080 <lineptr>, left=0, right=9,
+  comp=0x4008e6 <compareComplex>) at qsort.c:18
++echo === Array Addresses and contents before sorting ===
+=== Array Addresses and contents before sorting ===+print last
+$6 = 4206800
++print (char**)last
+$7 = (char **) 0x4030d0 <lineptr+80>
++print *((char**)last)@5
+$8 = {0x0, 0x0, 0x0, 0x0, 0x0}
++echo === Assembly Language for myQsort ===
+=== Assembly Language for myQsort ===+print last
+$9 = 4206800
++disassemble myQsort 
+Dump of assembler code for function myQsort:
+   0x00000000004005e2 <+0>:	push   %rbp
+   0x00000000004005e3 <+1>:	mov    %rsp,%rbp
+   0x00000000004005e6 <+4>:	sub    $0x30,%rsp
+   0x00000000004005ea <+8>:	mov    %rdi,-0x18(%rbp)
+   0x00000000004005ee <+12>:	mov    %esi,-0x1c(%rbp)
+   0x00000000004005f1 <+15>:	mov    %edx,-0x20(%rbp)
+   0x00000000004005f4 <+18>:	mov    %rcx,-0x28(%rbp)
+=> 0x00000000004005f8 <+22>:	mov    -0x1c(%rbp),%eax
+   0x00000000004005fb <+25>:	cmp    -0x20(%rbp),%eax
+   0x00000000004005fe <+28>:	jge    0x4006e8 <myQsort+262>
+   0x0000000000400604 <+34>:	mov    -0x1c(%rbp),%edx
+   0x0000000000400607 <+37>:	mov    -0x20(%rbp),%eax
+   0x000000000040060a <+40>:	add    %edx,%eax
+   0x000000000040060c <+42>:	mov    %eax,%edx
+   0x000000000040060e <+44>:	shr    $0x1f,%edx
+   0x0000000000400611 <+47>:	add    %edx,%eax
+   0x0000000000400613 <+49>:	sar    $1,%eax
+   0x0000000000400615 <+51>:	mov    %eax,%edx
+   0x0000000000400617 <+53>:	mov    -0x1c(%rbp),%ecx
+   0x000000000040061a <+56>:	mov    -0x18(%rbp),%rax
+   0x000000000040061e <+60>:	mov    %ecx,%esi
+   0x0000000000400620 <+62>:	mov    %rax,%rdi
+   0x0000000000400623 <+65>:	call   0x4006eb <swap>
+   0x0000000000400628 <+70>:	mov    -0x1c(%rbp),%eax
+   0x000000000040062b <+73>:	mov    %eax,-0x8(%rbp)
+   0x000000000040062e <+76>:	mov    -0x1c(%rbp),%eax
+   0x0000000000400631 <+79>:	add    $0x1,%eax
+   0x0000000000400634 <+82>:	mov    %eax,-0x4(%rbp)
+   0x0000000000400637 <+85>:	jmp    0x400693 <myQsort+177>
+   0x0000000000400639 <+87>:	mov    -0x1c(%rbp),%eax
+   0x000000000040063c <+90>:	cltq
+   0x000000000040063e <+92>:	lea    0x0(,%rax,8),%rdx
+   0x0000000000400646 <+100>:	mov    -0x18(%rbp),%rax
+   0x000000000040064a <+104>:	add    %rdx,%rax
+   0x000000000040064d <+107>:	mov    (%rax),%rdx
+   0x0000000000400650 <+110>:	mov    -0x4(%rbp),%eax
+   0x0000000000400653 <+113>:	cltq
+   0x0000000000400655 <+115>:	lea    0x0(,%rax,8),%rcx
+   0x000000000040065d <+123>:	mov    -0x18(%rbp),%rax
+   0x0000000000400661 <+127>:	add    %rcx,%rax
+   0x0000000000400664 <+130>:	mov    (%rax),%rax
+   0x0000000000400667 <+133>:	mov    -0x28(%rbp),%rcx
+   0x000000000040066b <+137>:	mov    %rdx,%rsi
+   0x000000000040066e <+140>:	mov    %rax,%rdi
+   0x0000000000400671 <+143>:	call   *%rcx
+   0x0000000000400673 <+145>:	test   %eax,%eax
+   0x0000000000400675 <+147>:	jns    0x40068f <myQsort+173>
+   0x0000000000400677 <+149>:	addl   $0x1,-0x8(%rbp)
+   0x000000000040067b <+153>:	mov    -0x4(%rbp),%edx
+   0x000000000040067e <+156>:	mov    -0x8(%rbp),%ecx
+   0x0000000000400681 <+159>:	mov    -0x18(%rbp),%rax
+   0x0000000000400685 <+163>:	mov    %ecx,%esi
+   0x0000000000400687 <+165>:	mov    %rax,%rdi
+   0x000000000040068a <+168>:	call   0x4006eb <swap>
+   0x000000000040068f <+173>:	addl   $0x1,-0x4(%rbp)
+   0x0000000000400693 <+177>:	mov    -0x4(%rbp),%eax
+   0x0000000000400696 <+180>:	cmp    -0x20(%rbp),%eax
+   0x0000000000400699 <+183>:	jle    0x400639 <myQsort+87>
+   0x000000000040069b <+185>:	mov    -0x8(%rbp),%edx
+   0x000000000040069e <+188>:	mov    -0x1c(%rbp),%ecx
+   0x00000000004006a1 <+191>:	mov    -0x18(%rbp),%rax
+   0x00000000004006a5 <+195>:	mov    %ecx,%esi
+   0x00000000004006a7 <+197>:	mov    %rax,%rdi
+   0x00000000004006aa <+200>:	call   0x4006eb <swap>
+   0x00000000004006af <+205>:	mov    -0x8(%rbp),%eax
+   0x00000000004006b2 <+208>:	lea    -0x1(%rax),%edi
+   0x00000000004006b5 <+211>:	mov    -0x28(%rbp),%rdx
+   0x00000000004006b9 <+215>:	mov    -0x1c(%rbp),%esi
+   0x00000000004006bc <+218>:	mov    -0x18(%rbp),%rax
+   0x00000000004006c0 <+222>:	mov    %rdx,%rcx
+   0x00000000004006c3 <+225>:	mov    %edi,%edx
+   0x00000000004006c5 <+227>:	mov    %rax,%rdi
+   0x00000000004006c8 <+230>:	call   0x4005e2 <myQsort>
+   0x00000000004006cd <+235>:	mov    -0x8(%rbp),%eax
+   0x00000000004006d0 <+238>:	lea    0x1(%rax),%esi
+   0x00000000004006d3 <+241>:	mov    -0x28(%rbp),%rcx
+   0x00000000004006d7 <+245>:	mov    -0x20(%rbp),%edx
+   0x00000000004006da <+248>:	mov    -0x18(%rbp),%rax
+   0x00000000004006de <+252>:	mov    %rax,%rdi
+   0x00000000004006e1 <+255>:	call   0x4005e2 <myQsort>
+   0x00000000004006e6 <+260>:	jmp    0x4006e9 <myQsort+263>
+   0x00000000004006e8 <+262>:	nop
+   0x00000000004006e9 <+263>:	leave
+   0x00000000004006ea <+264>:	ret
+End of assembler dump.
++c
+Continuing.
+
+Breakpoint 3, compareComplex (first=0x4062d0, second=0x406330)
+  at complexComp.c:25
++echo === Backtrace from inside compareComplex ===
+=== Backtrace from inside compareComplex ===+bt
+#0  compareComplex (first=0x4062d0, second=0x406330) at complexComp.c:25
+#1  0x0000000000400673 in myQsort (v=0x403080 <lineptr>, left=0, right=9,
+  comp=0x4008e6 <compareComplex>) at qsort.c:26
+#2  0x00000000004005b1 in main (argc=2, argv=0x7fffffffdbc8) at sortMain.c:44
++where
+#0  compareComplex (first=0x4062d0, second=0x406330) at complexComp.c:25
+#1  0x0000000000400673 in myQsort (v=0x403080 <lineptr>, left=0, right=9,
+  comp=0x4008e6 <compareComplex>) at qsort.c:26
+#2  0x00000000004005b1 in main (argc=2, argv=0x7fffffffdbc8) at sortMain.c:44
++echo === Complex Number Values ===
+=== Complex Number Values ===+info locals
+cFirst = {real = 1.9762625833649862e-323, imag = 2.0783958336732887e-317}
+index = 0x4 <error: Cannot access memory at address 0x4>
+cSnd = {real = 6.9533558073567488e-310, imag = 1.9762625833649862e-323}
+sizeFirst = 0
+sizeSecond = 4219568
++list 18,38
++finish
+Run till exit from #0  compareComplex (first=0x4062d0, second=0x406330)
+  at complexComp.c:25
+0x0000000000400673 in myQsort (v=0x403080 <lineptr>, left=0, right=9,
+  comp=0x4008e6 <compareComplex>) at qsort.c:26
+Value returned is $10 = -1
++finish
+Run till exit from #0  0x0000000000400673 in myQsort (v=0x403080 <lineptr>,
+  left=0, right=9, comp=0x4008e6 <compareComplex>) at qsort.c:26
+
+Breakpoint 3, compareComplex (first=0x4062f0, second=0x406330)
+  at complexComp.c:25
++echo === Array Contents after sorting ===
+=== Array Contents after sorting ===+ref
++print *((char**)last)@5
+No symbol "last" in current context.
++jump myQsort
+Continuing at 0x4005f8.
+
+Breakpoint 2, myQsort (v=0x403080 <lineptr>, left=1, right=1,
+  comp=0x406331) at qsort.c:18
++print *((char**)last)@5
+$11 = {0x69322d31 <error: Cannot access memory at address 0x69322d31>,
+  0x0, 0x0, 0x21 <error: Cannot access memory at address 0x21>, 0x69312b30
+  <error: Cannot access memory at address 0x69312b30>}
++break compareComplex 
+Note: breakpoint 3 also set at pc 0x4008f6.
+Breakpoint 4 at 0x4008f6: file complexComp.c, line 25.
++continue 
+Continuing.
+
+Breakpoint 3, compareComplex (first=0x406310, second=0x406330)
+  at complexComp.c:25
++set variable first = 0x0
++c
+Continuing.
+
+Program received signal SIGSEGV, Segmentation fault.
+0x00007ffff7cca763 in __GI_____strtod_l_internal (nptr=0x0,
+  endptr=0x7fffffffda08, group=<optimized out>, loc=0x7ffff7e8e3c0
+  <_nl_global_locale>) at strtod_l.c:612
++echo === forced a segmentation fault ===
+=== forced a segmentation fault ===+x/64bx $rsp
+0x7fffffffd550:	0x00	0x00	0x00	0x00	0x00	0x00	0x00	0x00
+0x7fffffffd558:	0xf0	0xe5	0xff	0xf7	0xff	0x7f	0x00	0x00
+0x7fffffffd560:	0x08	0x00	0x00	0x00	0x00	0x00	0x00	0x00
+0x7fffffffd568:	0x48	0x13	0x40	0x00	0x00	0x00	0x00	0x00
+0x7fffffffd570:	0x00	0x00	0x00	0x00	0x00	0x00	0x00	0x00
+0x7fffffffd578:	0x40	0x30	0x40	0x00	0x00	0x00	0x00	0x00
+0x7fffffffd580:	0xf0	0xd5	0xff	0xff	0xff	0x7f	0x00	0x00
+0x7fffffffd588:	0x7c	0x7b	0xfd	0xf7	0xff	0x7f	0x00	0x00
++info registers rsp
+rsp            0x7fffffffd550      0x7fffffffd550
++bt
+#0  0x00007ffff7cca763 in __GI_____strtod_l_internal (nptr=0x0,
+  endptr=0x7fffffffda08, group=<optimized out>, loc=0x7ffff7e8e3c0
+  <_nl_global_locale>) at strtod_l.c:612
+#1  0x0000000000400909 in compareComplex (first=0x0,
+  second=0x406330) at complexComp.c:25
+#2  0x0000000000400673 in myQsort (v=0x403080 <lineptr>, left=0,
+  right=9, comp=0x4008e6 <compareComplex>) at qsort.c:26
+#3  0x00000000004005b1 in main (argc=2, argv=0x7fffffffdbc8) at sortMain.c:44
++set logging off
+Warning: 'set logging off', an alias for the command
+  'set logging enabled', is deprecated.
+Use 'set logging enabled off'.
+
+=========================================
+GDB for intComp.c
+=========================================
+
++break compareInt 
+Breakpoint 1 at 0x4008cc: file intComp.c, line 18.
++set args 1 < input1.txt
++run
+Starting program: /student/naj474/CMPT332/LABS/
+  NAJ474-CMPT332-LAB0/lab0-workshop/myQsort 1 < input1.txt
+
+This GDB supports auto-downloading debuginfo from the following URLs:
+  <https://debuginfod.fedoraproject.org/>
+Debuginfod has been enabled.
+To make this setting permanent, add 'set debuginfod enabled on' to .gdbinit.
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib64/libthread_db.so.1".
+
+Breakpoint 1, compareInt (first=0x4062d0, second=0x406330) at intComp.c:18
+warning: Source file is more recent than executable.
++info locals
+a = 0
+b = 4219568
++print first
+$1 = (void *) 0x4062d0
++rint &first
+Undefined command: "rint".  Try "help".
++print &first
+$2 = (void **) 0x7fffffffda18
++print second
+$3 = (void *) 0x406330
++print &second
+$4 = (void **) 0x7fffffffda10
++print (char *)first
+$5 = 0x4062d0 "17"
++print (char*)second
+$6 = 0x406330 "99"
++ref
++print a
+$7 = 0
++print b
+$8 = 4219568
++list 10
++next
++next
++print a
+$9 = 4219600
++print b
+$10 = 4219696
++bt
+#0  compareInt (first=0x4062d0, second=0x406330) at intComp.c:24
+#1  0x0000000000400673 in myQsort (v=0x403080 <lineptr>, left=0,
+  right=9, comp=0x4008c0 <compareInt>) at qsort.c:26
+#2  0x00000000004005b1 in main (argc=2, argv=0x7fffffffdbc8) at sortMain.c:44
++set logging off
+Warning: 'set logging off', an alias for the command
+  'set logging enabled', is deprecated.
+Use 'set logging enabled off'.
+
+=========================================
+GDB for doubleComp.c
+=========================================
+
++disassemble compareDouble 
+Dump of assembler code for function compareDouble:
+   0x0000000000400932 <+0>:	push   %rbp
+   0x0000000000400933 <+1>:	mov    %rsp,%rbp
+   0x0000000000400936 <+4>:	sub    $0x20,%rsp
+   0x000000000040093a <+8>:	mov    %rdi,-0x18(%rbp)
+   0x000000000040093e <+12>:	mov    %rsi,-0x20(%rbp)
+   0x0000000000400942 <+16>:	mov    -0x18(%rbp),%rax
+   0x0000000000400946 <+20>:	mov    %rax,%rdi
+   0x0000000000400949 <+23>:	call   0x400390 <atof@plt>
+   0x000000000040094e <+28>:	movq   %xmm0,%rax
+   0x0000000000400953 <+33>:	mov    %rax,-0x8(%rbp)
+   0x0000000000400957 <+37>:	mov    -0x20(%rbp),%rax
+   0x000000000040095b <+41>:	mov    %rax,%rdi
+   0x000000000040095e <+44>:	call   0x400390 <atof@plt>
+   0x0000000000400963 <+49>:	movq   %xmm0,%rax
+   0x0000000000400968 <+54>:	mov    %rax,-0x10(%rbp)
+   0x000000000040096c <+58>:	movsd  -0x10(%rbp),%xmm0
+   0x0000000000400971 <+63>:	comisd -0x8(%rbp),%xmm0
+   0x0000000000400976 <+68>:	jbe    0x40097f <compareDouble+77>
+   0x0000000000400978 <+70>:	mov    $0xffffffff,%eax
+   0x000000000040097d <+75>:	jmp    0x4009b6 <compareDouble+132>
+   0x000000000040097f <+77>:	movsd  -0x8(%rbp),%xmm0
+   0x0000000000400984 <+82>:	ucomisd -0x10(%rbp),%xmm0
+   0x0000000000400989 <+87>:	jp     0x40099e <compareDouble+108>
+   0x000000000040098b <+89>:	movsd  -0x8(%rbp),%xmm0
+   0x0000000000400990 <+94>:	ucomisd -0x10(%rbp),%xmm0
+   0x0000000000400995 <+99>:	jne    0x40099e <compareDouble+108>
+   0x0000000000400997 <+101>:	mov    $0x0,%eax
+   0x000000000040099c <+106>:	jmp    0x4009b6 <compareDouble+132>
+   0x000000000040099e <+108>:	movsd  -0x8(%rbp),%xmm0
+   0x00000000004009a3 <+113>:	comisd -0x10(%rbp),%xmm0
+   0x00000000004009a8 <+118>:	jbe    0x4009b1 <compareDouble+127>
+   0x00000000004009aa <+120>:	mov    $0x1,%eax
+   0x00000000004009af <+125>:	jmp    0x4009b6 <compareDouble+132>
+   0x00000000004009b1 <+127>:	mov    $0x0,%eax
+   0x00000000004009b6 <+132>:	leave
+   0x00000000004009b7 <+133>:	ret
+End of assembler dump.
++set logging off
+Warning: 'set logging off', an alias for the command
+  'set logging enabled', is deprecated.
+Use 'set logging enabled off'.
