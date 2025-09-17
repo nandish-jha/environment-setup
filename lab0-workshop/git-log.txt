@@ -1,0 +1,97 @@
+NANDISH JHA NAJ474 11282001
+
+
+
+commit 98a330bf6f097ecb36f711874693b2d7ac193ee3
+Author: naj474 <naj474@usask.ca>
+Date:   Tue Sep 16 22:16:01 2025 -0600
+
+    Created a bash script.
+
+commit eb6d344476453d97980d217a91603430804827aa
+Author: naj474 <naj474@usask.ca>
+Date:   Tue Sep 16 21:47:23 2025 -0600
+
+    Built compareDouble similar to the intComp; Played with GDB (ASM).
+
+commit 523e4d1c991582103f9d17d45850a0479fabf53c
+Author: naj474 <naj474@usask.ca>
+Date:   Tue Sep 16 21:40:06 2025 -0600
+
+    GDB used to see what was happening in intComp; Fixed.
+
+commit 415a613b8be2b2c7f916c33cd0c0b529cdc1e43c
+Author: naj474 <naj474@usask.ca>
+Date:   Tue Sep 16 21:31:34 2025 -0600
+
+    Added code for the compareInt function; not working
+
+commit 13d9648c83bb420fbcc20cbe5c403700cd4ade28
+Author: naj474 <naj474@usask.ca>
+Date:   Tue Sep 16 20:54:12 2025 -0600
+
+    GDB Debugging: Not an error but a logical mistake in line 24 of qsort.c.
+
+commit 657be4ea031a0a5e6c3ca2855fc9b798cd3ad67f
+Author: naj474 <naj474@usask.ca>
+Date:   Tue Sep 16 20:33:43 2025 -0600
+
+    GDB Debugging: Paranthesis error in line 48 of input-routines.c
+
+commit 4b16560cf2e24dfda801f2e42e2dc82b39415eeb
+Author: naj474 <naj474@usask.ca>
+Date:   Tue Sep 16 20:31:52 2025 -0600
+
+    Trial run of gdb
+
+commit 882f8cbc4955edb34c26f85b34080d3282e8028a
+Author: naj474 <naj474@usask.ca>
+Date:   Tue Sep 16 16:17:28 2025 -0600
+
+    Renamed the input files for congruency with the comparator mode;
+    Working successfully for the string comparison.
+
+commit 36d261b50a7723365edee111958ec0faffa1ae74
+Author: naj474 <naj474@usask.ca>
+Date:   Tue Sep 16 15:46:56 2025 -0600
+
+    Fixed a syntax error in Makefile; created 4 text files for input testing.
+
+commit b26e82e0ea058dd43bae588fe0e7b9a457eee38f
+Author: naj474 <naj474@usask.ca>
+Date:   Tue Sep 16 15:14:57 2025 -0600
+
+    Combined all the header include calls in one header file for
+        cleaner code (qsort.h);
+    Makefile fully functional; Removed all the errors and warnings.
+
+commit e365431bc42f002e7be1d6ae9ba88eff58775a6e
+Author: naj474 <naj474@usask.ca>
+Date:   Tue Sep 16 12:38:27 2025 -0600
+
+    Added code in the make file for compilation and
+        created a qsort.h header file
+
+commit feeb43b5d3a3b042df65b8b7fa109bbe225dae92
+Author: naj474 <naj474@usask.ca>
+Date:   Tue Sep 16 12:20:14 2025 -0600
+
+    Added name information in all files; created an empty Makefile.
+
+commit 3621a7864716901410e91472fc68b8cd1893b68a
+Author: naj474 <naj474@usask.ca>
+Date:   Tue Sep 16 12:15:46 2025 -0600
+
+    removed unecessary files.
+
+commit 2fcb25a228f154badd7793cf00c04a0e2fa8ec80
+Author: naj474 <naj474@usask.ca>
+Date:   Tue Sep 16 11:47:22 2025 -0600
+
+    Uploading relevant starter files.
+
+commit 33a7e03badde61da8a04bd0a69fcf37fd00976e2
+Author: Nandish Jha (naj474) <nandish.jha@usask.ca>
+Date:   Tue Sep 16 11:35:27 2025 -0600
+
+    Initial commit
